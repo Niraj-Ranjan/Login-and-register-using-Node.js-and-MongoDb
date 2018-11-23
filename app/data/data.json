@@ -1,0 +1,22 @@
+{
+  "friends": [{
+    "title" : "Class Friend",
+    "name": "ABC",
+    "shortname" : "aaa",
+    "summary" : "Intro",
+    "description": "<p>Ajay was born in D.Dun </p>"
+    },{
+    "title" : "Best Friend ",
+    "name": "xyz",
+    "shortname" : "bbbb",
+    "summary": "Intro",
+    "description": "<p>Manpreet was born in D.dun</p>"
+  },{
+    "title" : "ME",
+    "name": "Niraj Ranjan",
+    "shortname" : "qqq",
+    "summary": "INTRO",
+    "description": "<p>Vijay was born in D.dun</p>"
+
+  }]
+}
