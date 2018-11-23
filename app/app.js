@@ -7,7 +7,7 @@ app.set('view engine','ejs');
 app.set('views','app/views');
 app.use(express.static('app/public'));
 loginController(app);
-app.listen(3000);
+app.listen(8080);
 
 
 
