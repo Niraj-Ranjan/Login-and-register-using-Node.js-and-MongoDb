@@ -7,7 +7,7 @@ app.set('view engine','ejs');
 app.set('views','app/views');
 app.use(express.static('app/public'));
 loginController(app);
-app.listen(8080);
+app.listen(process.env.PORT);
 
 
 
