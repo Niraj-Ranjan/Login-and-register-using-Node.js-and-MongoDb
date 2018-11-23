@@ -27,7 +27,7 @@ module.exports = (function(app){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
-   dbo.collection('userprofile').findOne({ name: req.body.name}, function(err, user) {
+   dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
              if(user === null){
                res.end("Login invalid");
             }else if (user.name === req.body.name && user.pass === req.body.pass){
