@@ -2,7 +2,7 @@
 
 var express = require('express');
 var app = express();
-var loginController = require('./controller/loginController');
+var loginController = require('./controller/logincontroller');
 app.set('view engine','ejs');
 app.set('views','app/views');
 app.use(express.static('app/public'));
