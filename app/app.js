@@ -6,6 +6,7 @@ var loginController = require('./controller/logincontroller');
 app.set('view engine','ejs');
 app.set('views','app/views');
 app.use(express.static('app/public'));
+app.use(express.static('app/controller'));
 loginController(app);
 app.listen(process.env.PORT);
 
