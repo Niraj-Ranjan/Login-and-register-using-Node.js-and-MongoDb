@@ -4,6 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
 
 
+
+
+
 module.exports = (function(app){
   app.get('/', function(req,res){
     res.render('home');
@@ -21,6 +24,21 @@ module.exports = (function(app){
   });
 
 
+  
+  app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+  
+  
+  
+  
+  // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({
+    extended: true
+})); // support encoded bodies
 
   // Login TO DB==================================================================
   app.post('/demo',urlencodedParser,function(req,res){
