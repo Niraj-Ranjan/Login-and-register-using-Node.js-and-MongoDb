@@ -47,12 +47,14 @@ app.use(bodyParser.urlencoded({
 
    dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
              if(user === null){
-               res.end("Login invalid");
+               res.send("Login invalid");
             }else if (user.name === req.body.name && user.pass === req.body.pass){
-            res.render('welcome');
+            res.send(user);
+              console.log(username + " logged in.");
           } else {
             console.log("Credentials wrong");
-            res.end("Login invalid");
+            res.send("false");
+            console.log(username + " entered incorrect password.");
           }
    });
  });
