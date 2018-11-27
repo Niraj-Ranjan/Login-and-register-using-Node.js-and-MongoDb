@@ -35,31 +35,51 @@ module.exports = (function(app){
   
   
   // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({
-    extended: true
-})); // support encoded bodies
+app.post('/demo', function (req, res) {
+    //console.log(req.body);
 
-  // Login TO DB==================================================================
-  app.post('/demo',urlencodedParser,function(req,res){
-   MongoClient.connect(url, function(err, db) {
-     var dbo = db.db("loginregister");
+    var username = req.body.uname;
 
-   dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
-             if(user === null){
-               res.send("Login invalid");
-            }else if (user.name === req.body.name && user.pass === req.body.pass){
-            res.send(user);
-              console.log(username + " logged in.");
-          } else {
-            console.log("Credentials wrong");
-            res.send("false");
-            console.log(username + " entered incorrect password.");
-          }
-   });
- });
+    var password = req.body.pword;
+
+    MongoClient.connect(url, function (err, db) {
+
+        if (err) {
+            throw err;
+        }
+
+        //console.log("Connected successfully to server");
+
+        var users = db.collection('register');
+
+        users.findOne({
+            id: uname
+        }, function (err1, data) {
+            if (err1) {
+                throw err1;
+            }
+
+            if (data !== null) {
+
+                if (data.password == password) {
+                    res.send(data);
+
+                    //console.log(username + " logged in.");
+                } else {
+                    res.send("false");
+                    //console.log(username + " entered incorrect password.");
+                }
+
+            } else {
+                res.send("invalid");
+                //console.log(username + " does not exist.");
+            }
+            db.close();
+        });
+    });
+
+
 });
-
 
 
 //register to DB================================================================
