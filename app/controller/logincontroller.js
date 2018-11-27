@@ -4,9 +4,6 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
 
 
-
-
-
 module.exports = (function(app){
   app.get('/', function(req,res){
     res.render('home');
@@ -23,63 +20,34 @@ module.exports = (function(app){
     res.render('index');
   });
 
+  app.get('/phonedetails',function(req,res){
+    res.render('phonedetails');
+  });
 
-  
-  app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+  app.get('/show',function(req,res){
+    res.render('show');
+  });
+
+
+
+  // Login TO DB==================================================================
+  app.post('/demo',urlencodedParser,function(req,res){
+   MongoClient.connect(url, function(err, db) {
+     var dbo = db.db("loginregister");
+
+   dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
+             if(user === null){
+               res.end("Login invalid");
+            }else if (user.name === req.body.name && user.pass === req.body.pass){
+            res.render('Welcome');
+          } else {
+            console.log("Credentials wrong");
+            res.end("Login invalid");
+          }
+   });
+ });
 });
-  
-  
-  
-  
-  // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
-app.post('/demo', function (req, res) {
-    //console.log(req.body);
 
-    var username = req.body.uname;
-
-    var password = req.body.pword;
-
-    MongoClient.connect(url, function (err, db) {
-
-        if (err) {
-            throw err;
-        }
-
-        //console.log("Connected successfully to server");
-
-        var users = db.collection('register');
-
-        users.findOne({
-            id: uname
-        }, function (err1, data) {
-            if (err1) {
-                throw err1;
-            }
-
-            if (data !== null) {
-
-                if (data.password == password) {
-                    res.send(data);
-
-                    //console.log(username + " logged in.");
-                } else {
-                    res.send("false");
-                    //console.log(username + " entered incorrect password.");
-                }
-
-            } else {
-                res.send("invalid");
-                //console.log(username + " does not exist.");
-            }
-            db.close();
-        });
-    });
-
-
-});
 
 
 //register to DB================================================================
@@ -103,4 +71,82 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
   });
 
 
+
+
+
+
+  //register to phone details================================================================
+
+  app.post('/phonedetails',urlencodedParser,function(req,res){
+   var obj = JSON.stringify(req.body);
+   var jsonObj = JSON.parse(obj);
+
+
+
+   MongoClient.connect(url, function(err, db) {
+     var dbo = db.db("loginregister");
+         dbo.collection("phonedetails").insertOne(jsonObj, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+         });
+          //res.render('completeprofile',{profileData:req.body});
+         });
+
+
+    });
+
+
+
+
+
+    //get list of all phone details================================================================
+
+    app.post('/getphonedetails',urlencodedParser,function(req,res){
+
+
+     MongoClient.connect(url, function(err, db) {
+       var dbo = db.db("loginregister");
+       data:'';
+           dbo.collection('phonedetails').find().toArray(function(err, docs) {
+          if (err) throw err;
+          console.log(docs);
+          res.render('show',{data:docs});
+          db.close();
+           });
+            //res.render('completeprofile',{profileData:req.body});
+           });
+
+
+      });
+
+
+      app.get('/delete', function(req, res, next) {
+
+  var id = req.query.phonename;
+
+  MongoClient.connect(url, function(err, db) {
+    var dbo = db.db("loginregister");
+
+    if(err) { throw err;  }
+
+    dbo.collection("phonedetails").deleteOne(id, function(err, obj) {
+       if (err) throw err;
+       console.log("1 document deleted");
+       db.close();
+     });
+
   });
+
+});
+
+
+
+
+
+
+
+
+
+  });
+
