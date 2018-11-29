@@ -1,12 +1,10 @@
-var express = require('express');
 var bodyParser = require('body-parser');
-
-var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({extended:false});
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
 
 
-var app = express();
+module.exports = (function(app){
   app.get('/', function(req,res){
     res.render('home');
   });
@@ -31,15 +29,9 @@ var app = express();
   });
 
 
- app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-  
-  
 
   // Login TO DB==================================================================
-  app.post('/demo', function(req,res){
+  app.post('/demo', urlencodedParser,function(req,res){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
@@ -49,7 +41,7 @@ app.use(bodyParser.urlencoded({
                res.send("false");
 
                
-            }else if (user.name == req.body.name && user.pass == req.body.pass){
+            }else if (user.name === req.body.name && user.pass === req.body.pass){
             res.send("true");
           } else {
             console.log("Credentials wrong");
@@ -62,7 +54,7 @@ app.use(bodyParser.urlencoded({
 
 
 //register to DB================================================================
-app.post('/regiterToDb', function(req,res){
+app.post('/regiterToDb',urlencodedParser,function(req,res){
  var obj = JSON.stringify(req.body);
  var jsonObj = JSON.parse(obj);
 
@@ -88,7 +80,7 @@ app.post('/regiterToDb', function(req,res){
 
   //register to phone details================================================================
 
-  app.post('/phonedetails', function(req,res){
+  app.post('/phonedetails',urlencodedParser,function(req,res){
    var obj = JSON.stringify(req.body);
    var jsonObj = JSON.parse(obj);
 
@@ -113,7 +105,7 @@ app.post('/regiterToDb', function(req,res){
 
     //get list of all phone details================================================================
 
-    app.post('/getphonedetails', function(req,res){
+    app.post('/getphonedetails',urlencodedParser,function(req,res){
 
 
      MongoClient.connect(url, function(err, db) {
@@ -150,3 +142,13 @@ app.post('/regiterToDb', function(req,res){
   });
 
 });
+
+
+
+
+
+
+
+
+
+  });
