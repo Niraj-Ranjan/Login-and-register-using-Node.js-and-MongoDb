@@ -65,6 +65,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
        dbo.collection("register").insertOne(jsonObj, function(err, res) {
       if (err) throw err;
       console.log("1 document inserted");
+         res.send("document inserted ");
       db.close();
        });
         //res.render('completeprofile',{profileData:req.body});
@@ -91,6 +92,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
          dbo.collection("phonedetails").insertOne(jsonObj, function(err, res) {
         if (err) throw err;
         console.log("1 document inserted");
+           res.send("Phone details added");
         db.close();
          });
           //res.render('completeprofile',{profileData:req.body});
@@ -135,6 +137,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
 
     dbo.collection("phonedetails").deleteOne(id, function(err, obj) {
        if (err) throw err;
+      res.send("Document is deleted");
        console.log("1 document deleted");
        db.close();
      });
