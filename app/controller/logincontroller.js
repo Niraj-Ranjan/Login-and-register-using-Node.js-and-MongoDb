@@ -35,10 +35,13 @@ module.exports = (function(app){
      var dbo = db.db("loginregister");
 
    dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
-           if (user.name == req.body.name && user.pass == req.body.pass){
-            res.send("true");
+             if(user === null){
+               res.end("Login invalid");
+            }else if (user.name === req.body.name && user.pass === req.body.pass){
+            res.render('Welcome');
           } else {
-            res.send("false");
+            console.log("Credentials wrong");
+            res.end("Login invalid");
           }
    });
  });
