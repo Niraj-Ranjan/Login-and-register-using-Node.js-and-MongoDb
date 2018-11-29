@@ -29,8 +29,9 @@ module.exports = (function(app){
   });
 
 
+
   // Login TO DB==================================================================
-  app.post('/demo', function(req, res){
+  app.post('/demo',urlencodedParser,function(req,res){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
@@ -151,4 +152,3 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
 
 
   });
-
