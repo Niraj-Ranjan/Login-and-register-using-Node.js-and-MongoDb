@@ -114,7 +114,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
            dbo.collection('phonedetails').find().toArray(function(err, docs) {
           if (err) throw err;
           res.send(docs);
-          res.render('show',{data:docs});
+          //res.render('show',{data:docs});
           db.close();
            });
             //res.render('completeprofile',{profileData:req.body});
