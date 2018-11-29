@@ -60,7 +60,7 @@ app.use(bodyParser.urlencoded({
 
 
 //register to DB================================================================
-app.post('/regiterToDb',urlencodedParser,function(req,res){
+app.post('/regiterToDb', function(req,res){
  var obj = JSON.stringify(req.body);
  var jsonObj = JSON.parse(obj);
 
@@ -86,7 +86,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
 
   //register to phone details================================================================
 
-  app.post('/phonedetails',urlencodedParser,function(req,res){
+  app.post('/phonedetails', function(req,res){
    var obj = JSON.stringify(req.body);
    var jsonObj = JSON.parse(obj);
 
@@ -111,7 +111,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
 
     //get list of all phone details================================================================
 
-    app.post('/getphonedetails',urlencodedParser,function(req,res){
+    app.post('/getphonedetails', function(req,res){
 
 
      MongoClient.connect(url, function(err, db) {
