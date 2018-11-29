@@ -113,7 +113,7 @@ app.post('/regiterToDb',urlencodedParser,function(req,res){
        data:'';
            dbo.collection('phonedetails').find().toArray(function(err, docs) {
           if (err) throw err;
-          console.log(docs);
+          res.send(docs);
           res.render('show',{data:docs});
           db.close();
            });
