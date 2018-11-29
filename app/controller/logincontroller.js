@@ -1,5 +1,4 @@
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
