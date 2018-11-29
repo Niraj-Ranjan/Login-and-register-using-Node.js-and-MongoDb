@@ -67,7 +67,7 @@ app.post('/regiterToDb',urlencodedParser, function(req,res){
        dbo.collection("register").insertOne(jsonObj, function(err, res) {
       if (err) throw err;
       console.log("1 document inserted");
-         res.send("document inserted ");
+         
       db.close();
        });
         //res.render('completeprofile',{profileData:req.body});
