@@ -29,12 +29,6 @@ module.exports = (function(app){
     res.render('show');
   });
 
-  
-  app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
 
   // Login TO DB==================================================================
   app.post('/demo', function(req, res){
