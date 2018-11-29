@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
 
 
-module.exports = (function(app){
+
   app.get('/', function(req,res){
     res.render('home');
   });
@@ -148,13 +148,3 @@ app.post('/regiterToDb', function(req,res){
   });
 
 });
-
-
-
-
-
-
-
-
-
-  });
