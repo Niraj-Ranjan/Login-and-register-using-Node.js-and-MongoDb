@@ -38,7 +38,7 @@ module.exports = (function(app){
    dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
              if(user === null){
                res.send("false");
-            }else if (user.name === req.body.name && user.pass === req.body.pass){
+            }else if (user.name == req.body.name && user.pass == req.body.pass){
             res.send("true");
           } else {
             console.log("Credentials wrong");
