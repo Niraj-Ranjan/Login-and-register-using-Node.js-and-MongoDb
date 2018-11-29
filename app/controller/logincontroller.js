@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
   
 
   // Login TO DB==================================================================
-  app.post('/demo',urlencodedParser,function(req,res){
+  app.post('/demo', function(req,res){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
