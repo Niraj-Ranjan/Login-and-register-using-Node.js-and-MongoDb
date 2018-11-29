@@ -1,4 +1,5 @@
 var bodyParser = require('body-parser');
+var fs = require('fs');
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
@@ -28,20 +29,22 @@ module.exports = (function(app){
     res.render('show');
   });
 
+  
+  app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 
   // Login TO DB==================================================================
-  app.post('/demo',urlencodedParser,function(req,res){
+  app.post('/demo', function(req, res){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
    dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
-             if(user === null){
-               res.send("false");
-            }else if (user.name == req.body.name && user.pass == req.body.pass){
+           if (user.name == req.body.name && user.pass == req.body.pass){
             res.send("true");
           } else {
-            console.log("Credentials wrong");
             res.send("false");
           }
    });
