@@ -55,7 +55,7 @@ module.exports = (function(app){
 
 //register to DB================================================================
 app.post('/regiterToDb',urlencodedParser, function(req,res){
-  
+ 
   
  var obj = JSON.stringify(req.body);
  var jsonObj = JSON.parse(obj);
