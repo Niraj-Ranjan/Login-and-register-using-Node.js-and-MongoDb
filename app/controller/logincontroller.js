@@ -30,15 +30,15 @@ app.use(cors())
 
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
-    var a = req.body.name;
-    var b = req.body.pass;
+    var a = req.body.uname;
+    var b = req.body.upass;
    
     console.log(a);
     
    MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
      var dbo = db.db("loginregister");
 
-          dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
+          dbo.collection('register').findOne({ name: req.body.uname}, function(err, user) {
             console.log(user);
 
    });
