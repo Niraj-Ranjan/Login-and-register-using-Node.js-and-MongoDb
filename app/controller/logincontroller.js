@@ -33,7 +33,7 @@ app.use(cors())
    
     console.log(req.body);
     
-   MongoClient.connect(url, useNewUrlParser: true, function(err, db) {
+   MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
      var dbo = db.db("loginregister");
 
           dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
