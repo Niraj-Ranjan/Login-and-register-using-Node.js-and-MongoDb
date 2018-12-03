@@ -4,13 +4,14 @@
   "description": "into\u001b[Dr",
   "main": "app.js",
   "scripts": {
-   "start": "nodemon app/app.js"
+    "start": "nodemon app/app.js"
   },
   "author": "Niraj",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "favicon": "0.0.2",
