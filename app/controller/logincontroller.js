@@ -35,7 +35,7 @@ app.use(bodyParser.json())
     var a = req.body.uname;
     var b = req.body.upass;
    
-    console.log(a);
+    console.log(req.body);
     
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
