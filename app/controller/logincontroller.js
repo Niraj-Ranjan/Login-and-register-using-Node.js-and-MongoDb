@@ -55,19 +55,16 @@ module.exports = (function(app){
 
 //register to DB================================================================
 app.post('/regiterToDb',urlencodedParser, function(req,res){
- 
-  
+
  var obj = JSON.stringify(req.body);
  var jsonObj = JSON.parse(obj);
-
-
 
  MongoClient.connect(url, function(err, db) {
    var dbo = db.db("loginregister");
        dbo.collection("register").insertOne(jsonObj, function(err, res) {
       if (err) throw err;
       console.log("1 document inserted");
-         
+         res.send()
       db.close();
        });
         //res.render('completeprofile',{profileData:req.body});
