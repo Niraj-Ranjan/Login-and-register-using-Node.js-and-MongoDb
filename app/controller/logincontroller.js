@@ -46,7 +46,7 @@ app.use(bodyParser.json())
        console.log(user);
          if(user == null){
          res.send("User does not exixt ")}
-         else if(user.name == username and user.pass == password){
+         else if(user.name == username && user.pass == password){
          res.send("True")}
          else{
          res.send("Wrong user name and password")}
