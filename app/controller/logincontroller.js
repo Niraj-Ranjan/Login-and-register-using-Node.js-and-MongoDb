@@ -30,8 +30,10 @@ app.use(cors())
 
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
+    var a = req.body.name;
+    var b = req.body.pass;
    
-    console.log(req.body);
+    console.log(a);
     
    MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
      var dbo = db.db("loginregister");
