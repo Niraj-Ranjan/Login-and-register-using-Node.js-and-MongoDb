@@ -78,9 +78,6 @@ app.post('/regiterToDb',urlencodedParser, function(req,res){
 
 
 
-
-
-
   //register to phone details================================================================
 
   app.post('/phonedetails',urlencodedParser,function(req,res){
