@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended:true});
 var cors = require('cors')
 var MongoClient = require('mongodb').MongoClient;
@@ -27,7 +28,6 @@ module.exports = (function(app){
   });
 app.use(cors())
 
-app.use(express.bodyParser());
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
     var a = req.body.uname;
