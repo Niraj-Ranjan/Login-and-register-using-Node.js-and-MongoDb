@@ -32,16 +32,24 @@ app.use(bodyParser.json())
 
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
-    var a = req.body.uname;
-    var b = req.body.upass;
+    var username = req.body.uname;
+    var password = req.body.upass;
    
     console.log(req.body);
     
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
-
-          dbo.collection('register').findOne({ name: a}, function(err, user) {
-            console.log(user);
+     if (err) {
+            throw err;
+        }
+       dbo.collection('register').findOne({ name: a}, function(err, user) {
+       console.log(user);
+         if(user == null){
+         res.send("User does not exixt ")}
+         else if(user.name == username and user.pass == password){
+         res.send("True")}
+         else{
+         res.send("Wrong user name and password")}
 
    });
  });
