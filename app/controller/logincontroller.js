@@ -31,9 +31,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
   // Login TO DB==================================================================
-  app.post('/demo',function(req,res){
-    var username = req.body.uname;
-    var password = req.body.upass;
+  app.post('/dar username = req.body.uname;
+    var password = req.body.upass;emo',function(req,res){
+    v
    
     console.log(req.body);
     
@@ -42,7 +42,7 @@ app.use(bodyParser.json())
      if (err) {
             throw err;
         }
-       dbo.collection('register').findOne({ name: a}, function(err, user) {
+       dbo.collection('register').findOne({ name: username}, function(err, user) {
        console.log(user);
          if(user == null){
          res.send("User does not exixt ")}
