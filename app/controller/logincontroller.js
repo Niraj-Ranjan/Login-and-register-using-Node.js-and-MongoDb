@@ -34,13 +34,13 @@ app.use(cors())
      var dbo = db.db("loginregister");
 
    dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
-             if(user === null){
+             if(user == null){
 
                res.send("false");
                console.log(user)
 
                
-            }else if (user.name === req.body.name && user.pass === req.body.pass){
+            }else if (user.name == req.body.name && user.pass == req.body.pass){
             res.send("true");
               
           } else {
