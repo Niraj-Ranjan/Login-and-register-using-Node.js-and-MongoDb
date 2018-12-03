@@ -31,9 +31,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
   // Login TO DB==================================================================
-  app.post('/dar username = req.body.uname;
-    var password = req.body.upass;emo',function(req,res){
-    v
+  app.post('/demo',urlencodedParser,function(req,res){
+    
+    var username = req.body.uname;
+    var password = req.body.upass;
    
     console.log(req.body);
     
