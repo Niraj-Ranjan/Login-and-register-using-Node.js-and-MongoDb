@@ -71,7 +71,7 @@ app.post('/regiterToDb',urlencodedParser, function(req,res){
       //console.log("1 document inserted");
          if(err){
            console.log("error");
-           res.send("false");
+           res.send("false")
          }
          else{
            console.log("1 document inserted");
@@ -80,10 +80,11 @@ app.post('/regiterToDb',urlencodedParser, function(req,res){
         
       
        });
+   db.close();
         //res.render('completeprofile',{profileData:req.body});
        });
 
-db.close();
+
   });
 
 
