@@ -27,6 +27,8 @@ module.exports = (function(app){
     res.render('show');
   });
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
