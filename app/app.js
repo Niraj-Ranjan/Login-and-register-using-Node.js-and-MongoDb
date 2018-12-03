@@ -1,8 +1,6 @@
-
-
 var express = require('express');
-var bodyParser = require('body-parser');
 var app = express();
+var bodyParser = require('body-parser');
 var loginController = require('./controller/logincontroller');
 app.set('view engine','ejs');
 app.set('views','app/views');
