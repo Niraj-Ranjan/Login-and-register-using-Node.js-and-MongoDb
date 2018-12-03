@@ -40,7 +40,7 @@ app.use(bodyParser.json())
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
-          dbo.collection('register').findOne({ name: req.body.uname}, function(err, user) {
+          dbo.collection('register').findOne({ name: a}, function(err, user) {
             console.log(user);
 
    });
