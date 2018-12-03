@@ -1,6 +1,7 @@
 
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 var loginController = require('./controller/logincontroller');
 app.set('view engine','ejs');
@@ -12,6 +13,8 @@ app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
+app.use(express.bodyParser());
+
 loginController(app);
 app.listen(process.env.PORT);
 
