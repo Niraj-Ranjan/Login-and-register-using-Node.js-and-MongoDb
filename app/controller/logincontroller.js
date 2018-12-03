@@ -59,14 +59,14 @@ app.use(bodyParser.json())
 
 
 //register to DB================================================================
-app.post('/regiterToDb',urlencodedParser, function(req,res){
+app.post('/regiterToDb',urlencodedParser, function(req,result){
 
  var obj = JSON.stringify(req.body);
  var jsonObj = JSON.parse(obj);
 
  MongoClient.connect(url, function(err, db) {
    var dbo = db.db("loginregister");
-       dbo.collection("register").insertOne(jsonObj, function(err, result) {
+       dbo.collection("register").insertOne(jsonObj, function(err, res) {
       if(err) 
         throw err;
       else{
