@@ -29,7 +29,7 @@ app.use(cors())
 
 
   // Login TO DB==================================================================
-  app.post('/demo', urlencodedParser,function(req,res){
+  app.post('/demo', urlencodedParser : true,function(req,res){
    
     console.log(req.body);
     
