@@ -27,7 +27,7 @@ module.exports = (function(app){
   });
 app.use(cors())
 
-
+app.use(express.bodyParser());
   // Login TO DB==================================================================
   app.post('/demo',function(req,res){
     var a = req.body.uname;
