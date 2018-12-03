@@ -37,10 +37,12 @@ app.use(cors())
              if(user === null){
 
                res.send("false");
+               console.log(user)
 
                
             }else if (user.name === req.body.name && user.pass === req.body.pass){
             res.send("true");
+              
           } else {
             console.log("Credentials wrong");
             res.send("false");
