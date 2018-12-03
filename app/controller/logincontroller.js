@@ -30,32 +30,15 @@ app.use(cors())
 
   // Login TO DB==================================================================
   app.post('/demo', urlencodedParser,function(req,res){
-    
-    ///
+   
     console.log(req.body);
     
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
 
           dbo.collection('register').findOne({ name: req.body.name}, function(err, user) {
-            
-            /////
-            
             console.log(user);
-            
-             if(user == null){
 
-               res.send("false");
-               console.log(user)
-
-               
-            }else if (user.name == req.body.name && user.pass == req.body.pass){
-            res.send("true");
-              
-          } else {
-            console.log("Credentials wrong");
-            res.send("false");
-       }
    });
  });
 });
