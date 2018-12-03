@@ -71,7 +71,7 @@ app.post('/regiterToDb',urlencodedParser, function(req,res){
         throw err;
       else{
         console.log("1 document inserted");
-        result.send("True");
+        result.send("True")
       }
           db.close();
        });
