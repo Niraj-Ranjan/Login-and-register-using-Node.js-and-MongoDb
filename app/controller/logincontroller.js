@@ -15,7 +15,6 @@ module.exports = (function(app){
     res.render('welcome');
   });
 
-
   app.get('/index',function(req,res){
     res.render('index');
   });
