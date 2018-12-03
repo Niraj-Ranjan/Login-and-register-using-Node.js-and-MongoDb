@@ -1,5 +1,5 @@
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({extended:false});
+var urlencodedParser = bodyParser.urlencoded({extended:true});
 var cors = require('cors')
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb+srv://demo:qwerty123@cluster0-d86ug.mongodb.net/loginregister?retryWrites=true';
@@ -29,7 +29,7 @@ app.use(cors())
 
 
   // Login TO DB==================================================================
-  app.post('/demo', urlencodedParser : true,function(req,res){
+  app.post('/demo', urlencodedParser,function(req,res){
    
     console.log(req.body);
     
