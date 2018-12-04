@@ -85,7 +85,7 @@ app.post('/regiterToDb',urlencodedParser, function(req,result){
 
   //register to phone details================================================================
 
-  app.post('/phonedetails',urlencodedParser,function(req,res){
+  app.post('/phonedetails',urlencodedParser,function(req,result2){
    var obj = JSON.stringify(req.body);
    var jsonObj = JSON.parse(obj);
 
@@ -98,7 +98,7 @@ app.post('/regiterToDb',urlencodedParser, function(req,result){
         throw err;
       else{
         console.log("1 document inserted");
-        result.send("True")
+        result2.send("True")
       }
           db.close();
          });
