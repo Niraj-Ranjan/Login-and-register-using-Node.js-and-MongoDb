@@ -94,10 +94,13 @@ app.post('/regiterToDb',urlencodedParser, function(req,result){
    MongoClient.connect(url, function(err, db) {
      var dbo = db.db("loginregister");
          dbo.collection("phonedetails").insertOne(jsonObj, function(err, res) {
-        if (err) throw err;
+        if(err) 
+        throw err;
+      else{
         console.log("1 document inserted");
-           res.send("Phone details added");
-        db.close();
+        result.send("True")
+      }
+          db.close();
          });
           //res.render('completeprofile',{profileData:req.body});
          });
